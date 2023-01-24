@@ -1,5 +1,6 @@
 
 
+/*Función para copiar en el portapapeles */
 
 function copiar(){
     let copyText = document.querySelector("#textoImpreso");
@@ -11,20 +12,46 @@ function copiar(){
 }
 
 
+/*Función para imprimir texto encriptado o desencriptado */
 
-function imprimirTexto(texto){
+function imprimirTexto(imprimir){
 
-    document.getElementById('rectangulo').innerHTML='<div class="content" style=" height:90%; justify-content: space-between;"><p id="textoImpreso">'+ texto +'</p><button id="boton_copiar" onclick="copiar()">Copiar</button></div>'
-    
+    var aviso=document.querySelector('#mostrarAviso');
+
+    aviso.classList.add("desaparecer");
+
+    var mostrarTexto=document.querySelector('#mostrarTexto');
+
+    mostrarTexto.classList.remove('desaparecer');
+
+    var texto=document.querySelector('#textoImpreso');
+
+    texto.innerHTML=imprimir;
 
 }
 
+/*Función para remover acentos */
+
 const removeAccents = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  } 
+} 
+
+
+
+  
+
+var diccionario={
+    'a': 'ai',
+    'e':'enter',
+    'i':'imes',
+    'o':'ober',
+    'u':'ufat',
+}
+
 
 
 /*Función de encriptar palabras*/
+
 function encriptar(){
 
     var cadena=removeAccents(document.getElementById('entradaDatos').value);
@@ -38,24 +65,24 @@ function encriptar(){
 
         var letter=text.charAt(i);
         if(letter=='a'){
-            textoEncriptado=textoEncriptado+'ai';
+            textoEncriptado+=diccionario['a'];
         }else if(letter=='e'){
-            textoEncriptado=textoEncriptado+'enter';
+            textoEncriptado+=diccionario['e'];
         }else if(letter=='i'){
-            textoEncriptado=textoEncriptado+'imes';
+            textoEncriptado+=diccionario['i'];
         }else if(letter=='o'){
-            textoEncriptado=textoEncriptado+'ober';
+            textoEncriptado+=diccionario['o'];
         }else if(letter=='u'){
-            textoEncriptado=textoEncriptado+'ufat';
+            textoEncriptado+=diccionario['u'];
         }else if(letter==' '){
-            textoEncriptado=textoEncriptado+letter;
+            textoEncriptado+=letter;
         }else {
-            textoEncriptado=textoEncriptado+letter;
+            textoEncriptado+=letter;
         }
     }
     
-    
     imprimirTexto(textoEncriptado);
+
     event.preventDefault();
 
 
@@ -97,10 +124,10 @@ function desencriptar(){
             textoDesencriptado=textoDesencriptado+letter;
         }
     }
-    
-    imprimirTexto(textoDesencriptado);
-    event.preventDefault();
 
+    imprimirTexto(textoDesencriptado);
+
+    event.preventDefault();
 
 }
 

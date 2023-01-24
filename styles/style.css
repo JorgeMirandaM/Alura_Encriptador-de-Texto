@@ -121,8 +121,9 @@ button {
  
 }
 
-.rectangulo .content {
+ .content {
   width: 100%;
+  height: 100%;
   margin: 16px;
   padding: 16px;
   
@@ -135,6 +136,10 @@ button {
   box-sizing: border-box;
 
   
+}
+
+.rectangulo .mensaje{
+  height: 90%;
 }
 
 .rectangulo .content img {
@@ -167,6 +172,24 @@ p {
   text-align: center;
   padding: 0 10%;
 
+}
+
+.desaparecer{
+  display: none;
+}
+
+#textoImpreso{
+  flex-basis: 100%;
+  margin-top: 64px;
+
+  font-size: 32px;
+  background-color: transparent;
+
+  color: #0a3871;
+  line-height: 40px;
+  border: none;
+  resize: none;
+  text-transform: lowercase;
 }
 
 
